@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         // movement
-        //input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         animator.SetFloat("MoveSpeed", Mathf.Abs(input.magnitude));
         
         // rotation
