@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+// comment test
 
 public class Player : MonoBehaviour
 {
@@ -11,10 +13,9 @@ public class Player : MonoBehaviour
     [SerializeField] float sensitivity;
     [SerializeField] GameObject HasKey;
     [SerializeField] Transform lookPos;
-    //[SerializeField] public float moveSpeed;
 
-    [SerializeField] GameObject keyhold;
-    private float normalSpeed;
+
+
     private float rotX;
     private float rotY;
     // Start is called before the first frame update
@@ -22,14 +23,13 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
-        normalSpeed = speed;
     }
 
     // Update is called once per frame
     void Update()
     {
         // movement
-        input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        //input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         animator.SetFloat("MoveSpeed", Mathf.Abs(input.magnitude));
         
         // rotation
@@ -49,7 +49,6 @@ public class Player : MonoBehaviour
         var newVelocity = new Vector3(newInput.x * speed, rb.velocity.y, newInput.z * speed);
 
         rb.velocity = newVelocity;
-        Debug.Log(newVelocity);
     }
     Vector3 GetCameraBasedInput(Vector2 input, Camera cam)
     {
@@ -65,18 +64,16 @@ public class Player : MonoBehaviour
     }
     public void SetSpeed(float newSpeed)
     {
-        speed = newSpeed;
+       // moveSpeed = newSpeed;
     }
     public void WalkingKey(bool hasKey)
     {
         animator.SetBool("Key", true);
         gameObject.SetActive(true);
-        keyhold.SetActive(true);
     }
-    public void DropKey(bool hasKey)
-        {
-            speed = normalSpeed;
-        }
 
-
+    public void Move(InputAction.CallbackContext ctx)
+    {
+        input = ctx.ReadValue<Vector2>();
+    }
 }
