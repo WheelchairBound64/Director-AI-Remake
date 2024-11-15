@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Cope : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        
+        //seethe
     }
 
     // Update is called once per frame
