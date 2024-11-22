@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+//using UnityEngine.InputSystem;
 // comment test
 
 public class Player : MonoBehaviour
@@ -15,7 +15,8 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject HasKey;
     [SerializeField] Transform lookPos;
 
-
+    [SerializeField] GameObject keyhold;
+    private float normalSpeed;
     private float rotX;
     private float rotY;
 
@@ -28,7 +29,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
-        
+        normalSpeed = speed;
     }
 
     // Update is called once per frame
@@ -70,16 +71,18 @@ public class Player : MonoBehaviour
     }
     public void SetSpeed(float newSpeed)
     {
-       // moveSpeed = newSpeed;
+        speed = newSpeed;
     }
     public void WalkingKey(bool hasKey)
     {
         animator.SetBool("Key", true);
         gameObject.SetActive(true);
+        keyhold.SetActive(true);
+    }
+    public void DropKey(bool hasKey)
+    {
+        speed = normalSpeed;
     }
 
-    public void Move(InputAction.CallbackContext ctx)
-    {
-        input = ctx.ReadValue<Vector2>();
-    }
+
 }
