@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
 {
     private Vector2 input;
     private Rigidbody rb;
-    public SpawnEnemy enemySpawnScript;
     [SerializeField] public float speed;
     [SerializeField] Animator animator;
     [SerializeField] float sensitivity;
@@ -18,17 +17,12 @@ public class Player : MonoBehaviour
 
     private float rotX;
     private float rotY;
-
-    private void Awake()
-    {
-        enemySpawnScript.Spawner();
-    }
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
-        
+        gameObject.tag = "Player";
     }
 
     // Update is called once per frame
