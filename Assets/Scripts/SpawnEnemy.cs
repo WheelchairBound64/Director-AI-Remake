@@ -10,6 +10,7 @@ public class SpawnEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spawn.GetComponent<MeshRenderer>().enabled = false;
         count = 10;
         StartCoroutine(SpawnSteve(enemy, spawn));
     }
@@ -28,5 +29,8 @@ public class SpawnEnemy : MonoBehaviour
             yield return new WaitForSeconds(4.0f);
             count--;
         }
+        StopCoroutine(SpawnSteve(enemy, spawn));
+        count = 10;
+        Debug.Log(count);
     }
 }
