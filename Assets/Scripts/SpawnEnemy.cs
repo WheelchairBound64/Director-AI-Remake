@@ -6,22 +6,30 @@ public class SpawnEnemy : MonoBehaviour
 {
     [SerializeField] GameObject enemy;
     [SerializeField] GameObject spawn;
+    GameObject player;
     private int count;
+    private int num;
     // Start is called before the first frame update
     void Start()
     {
         spawn.GetComponent<MeshRenderer>().enabled = false;
         count = 10;
+        num = 1;
         //StartCoroutine(SpawnSteve(enemy, spawn));
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null && num == 1)
+        {
+            num -= 1;
+            StartSpawner();
+        }
     }
 
-    public void Spawner()
+    public void StartSpawner()
     {
         StartCoroutine(SpawnSteve(enemy, spawn));
     }
@@ -36,6 +44,6 @@ public class SpawnEnemy : MonoBehaviour
         }
         StopCoroutine(SpawnSteve(enemy, spawn));
         count = 10;
-        Debug.Log(count);
+        num = 1;
     }
 }
