@@ -832,6 +832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8383c2f30993e3844bbe1aee07418664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpawnScript: {fileID: 5484597489140549, guid: 726aaadc842f3234d83615e47ce80eb4, type: 3}
   speed: 3
   animator: {fileID: 5695924836290481279}
   sensitivity: 4

@@ -12,13 +12,18 @@ public class SpawnEnemy : MonoBehaviour
     {
         spawn.GetComponent<MeshRenderer>().enabled = false;
         count = 10;
-        StartCoroutine(SpawnSteve(enemy, spawn));
+        //StartCoroutine(SpawnSteve(enemy, spawn));
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void Spawner()
+    {
+        StartCoroutine(SpawnSteve(enemy, spawn));
     }
 
     IEnumerator SpawnSteve(GameObject e, GameObject s)
