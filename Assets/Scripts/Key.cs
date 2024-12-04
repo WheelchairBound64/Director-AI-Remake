@@ -38,8 +38,7 @@ public class Key : MonoBehaviour
             player.speed = player.speed / 2;
             player.WalkingKey(true);
 
-            playerKey.SetActive(true);
-            //if ()
+            gameObject.SetActive(false) ;
         }
         //if(player)
         //switch animation

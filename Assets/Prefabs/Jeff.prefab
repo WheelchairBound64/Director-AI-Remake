@@ -837,7 +837,7 @@ MonoBehaviour:
   sensitivity: 4
   HasKey: {fileID: 6015486248551409489}
   lookPos: {fileID: 5538834296218852038}
-  keyhold: {fileID: 0}
+  keyhold: {fileID: 6015486248551409489}
 --- !u!114 &7396358604028960419
 MonoBehaviour:
   m_ObjectHideFlags: 0
