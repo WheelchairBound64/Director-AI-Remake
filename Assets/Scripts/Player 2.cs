@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.InputSystem;
-// comment test
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -79,5 +78,16 @@ public class Player : MonoBehaviour
         speed = normalSpeed;
     }
 
+    public void ShootGun()
+    {
+        StartCoroutine(Shoot());
+    }
 
+    IEnumerator Shoot()
+    {
+        speed = 0;
+        yield return new WaitForSeconds(1f);
+        speed = normalSpeed;
+        StopCoroutine(Shoot());
+    }
 }
