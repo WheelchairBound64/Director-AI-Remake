@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     [SerializeField] Transform lookPos;
 
     [SerializeField] GameObject keyhold;
+    [SerializeField] GameObject gun;
+   
     private float normalSpeed;
     private float rotX;
     private float rotY;
@@ -72,15 +74,24 @@ public class Player : MonoBehaviour
         animator.SetBool("Key", true);
         gameObject.SetActive(true);
         keyhold.SetActive(true);
+        
     }
     public void DropKey(bool hasKey)
     {
         speed = normalSpeed;
     }
 
-    public void ShootGun()
+    public void ShootGun(bool shooting)
     {
+        Debug.Log("Shot");
+        gun.SetActive(true );
+        
+        animator.SetBool("Shoot", true);
+        gameObject.SetActive(true);
+        //firing.SetActive(true);
+        
         StartCoroutine(Shoot());
+
     }
 
     IEnumerator Shoot()
@@ -88,6 +99,9 @@ public class Player : MonoBehaviour
         speed = 0;
         yield return new WaitForSeconds(1f);
         speed = normalSpeed;
+        animator.SetBool("Shoot", false);
+        gun.SetActive(false );
         StopCoroutine(Shoot());
+        //player.ShootGun(true);
     }
 }

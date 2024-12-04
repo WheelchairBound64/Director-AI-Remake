@@ -24,6 +24,7 @@ public class Key : MonoBehaviour
             myplayer.WalkingKey(false);
             // myplayer.SetSpeed(3);
             myplayer.DropKey(false);
+            //myplayer.ShootGun(true);
 
 
         }
