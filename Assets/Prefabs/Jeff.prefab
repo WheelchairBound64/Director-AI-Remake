@@ -721,6 +721,7 @@ GameObject:
   - component: {fileID: 4619281533163557611}
   - component: {fileID: 6553113758239482373}
   - component: {fileID: -7626358883852087296}
+  - component: {fileID: 6338377642811664081}
   m_Layer: 0
   m_Name: Jeff
   m_TagString: Untagged
@@ -954,6 +955,22 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &6338377642811664081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2470398532831783459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a786aea9fe3aecb4a8bb32831da523ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  current: {fileID: 11400000, guid: faca3ac18e18b0c4fafeab3af853f346, type: 2}
+  max: {fileID: 11400000, guid: bc2c433ac5a5c404f8a01325005f7cc4, type: 2}
+  bar: {fileID: 5248155244783208239}
+  enemy: {fileID: 1249915022665855571, guid: d3ee796e00e3b424f92f828bee08508c, type: 3}
 --- !u!1 &2577736138181329731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,6 +1411,7 @@ MonoBehaviour:
   current: {fileID: 11400000, guid: faca3ac18e18b0c4fafeab3af853f346, type: 2}
   max: {fileID: 11400000, guid: bc2c433ac5a5c404f8a01325005f7cc4, type: 2}
   bar: {fileID: 5248155244783208239}
+  enemy: {fileID: 0}
 --- !u!1 &3436052405567570934
 GameObject:
   m_ObjectHideFlags: 0
