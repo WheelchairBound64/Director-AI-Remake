@@ -7,13 +7,17 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] GameObject enemy;
     [SerializeField] GameObject spawn;
     GameObject player;
-    private int count;
+    public int enemyCount;
+    private int counter;
     private int num;
+    public float startDelay;
+    public float delayRespawn;
+    public float spawnSpeed;
     // Start is called before the first frame update
     void Start()
     {
         spawn.GetComponent<MeshRenderer>().enabled = false;
-        count = 10;
+        counter = enemyCount;
         num = 1;
         //StartCoroutine(SpawnSteve(enemy, spawn));
     }
@@ -36,14 +40,22 @@ public class SpawnEnemy : MonoBehaviour
 
     IEnumerator SpawnSteve(GameObject e, GameObject s)
     {
-        while (count != 0)
+        yield return new WaitForSeconds(startDelay);
+        while (counter != 0)
         {
             Instantiate(e, s.transform);
-            yield return new WaitForSeconds(4.0f);
-            count--;
+            yield return new WaitForSeconds(spawnSpeed);
+            counter--;
         }
         StopCoroutine(SpawnSteve(enemy, spawn));
-        count = 10;
-        num = 1;
+        counter = enemyCount;
+        StartCoroutine(RestartSpawner());
+    }
+
+    IEnumerator RestartSpawner()
+    {
+        yield return new WaitForSeconds(delayRespawn);
+        num++;
+        StopCoroutine(RestartSpawner());
     }
 }

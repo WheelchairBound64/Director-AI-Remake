@@ -832,12 +832,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8383c2f30993e3844bbe1aee07418664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 5484597489140549, guid: 726aaadc842f3234d83615e47ce80eb4, type: 3}
-  speed: 3
+  speed: 4
   animator: {fileID: 5695924836290481279}
   sensitivity: 4
   HasKey: {fileID: 6015486248551409489}
   lookPos: {fileID: 5538834296218852038}
+  keyhold: {fileID: 0}
 --- !u!114 &7396358604028960419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2202,6 +2202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 804506ba7f25ba44c85be7cfc5e20fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerKey: {fileID: 0}
 --- !u!1 &6135236821102420856
 GameObject:
   m_ObjectHideFlags: 0
