@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
     private Vector2 input;
     private Rigidbody rb;
+    [SerializeField] Stat current;
+    [SerializeField] Stat max;
     [SerializeField] public float speed;
     [SerializeField] Animator animator;
     [SerializeField] float sensitivity;
@@ -15,10 +17,22 @@ public class Player : MonoBehaviour
 
     [SerializeField] GameObject keyhold;
     [SerializeField] GameObject gun;
-   
+    [SerializeField] Transform gunEnd;
+    [SerializeField] GameObject crosshair;
+    PlayerInput playerMovement;
+
+    [SerializeField] LineRenderer tracer;
+    List<Vector3> tracerPoints = new List<Vector3>();
+
     private float normalSpeed;
     private float rotX;
     private float rotY;
+
+    private void Awake()
+    {
+        current.amount = max.amount;
+        tracer.enabled = false;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +40,9 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         normalSpeed = speed;
         gameObject.tag = "Player";
+        tracerPoints.Clear();
+        gun.SetActive(true);
+        playerMovement = GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
@@ -45,6 +62,21 @@ public class Player : MonoBehaviour
 
         transform.eulerAngles = new Vector3(0, rotY, 0);
         lookPos.eulerAngles = new Vector3(rotX, rotY, 0);
+
+        if (Physics.Raycast(gunEnd.position, gunEnd.right, out RaycastHit hit, 9999999.0f))
+        {
+            crosshair.transform.forward = hit.normal;
+            crosshair.transform.position = hit.point + hit.normal * 0.1f;
+            crosshair.SetActive(true);
+        }
+        else
+        {
+            crosshair.SetActive(false);
+        }
+        if(current.amount <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
     private void FixedUpdate()
     {
@@ -83,25 +115,44 @@ public class Player : MonoBehaviour
 
     public void ShootGun(bool shooting)
     {
-        Debug.Log("Shot");
-        gun.SetActive(true );
-        
+        playerMovement.actions.Disable();
+        tracer.enabled = true;
         animator.SetBool("Shoot", true);
         gameObject.SetActive(true);
         //firing.SetActive(true);
-        
-        StartCoroutine(Shoot());
+        tracerPoints.Clear();
+        tracerPoints.Add(gunEnd.position);
+        if (Physics.Raycast(gunEnd.position, gunEnd.right, out RaycastHit hit, 9999999.0f))
+        {
+            tracerPoints.Add(hit.point);
+            EnemyAI enemy;
+            hit.transform.TryGetComponent<EnemyAI>(out enemy);
+            if (enemy != null)
+            {
+                enemy.Damage();
+            }
+        }
 
+        tracer.positionCount = tracerPoints.Count;
+        for (int i = 0; i < tracer.positionCount; i++)
+        {
+            tracer.SetPosition(i, tracerPoints[i]);
+        }
+
+        StartCoroutine(Shoot());
     }
 
     IEnumerator Shoot()
     {
         speed = 0;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
+        playerMovement.actions.Enable();
         speed = normalSpeed;
         animator.SetBool("Shoot", false);
-        gun.SetActive(false );
+        tracer.enabled = false;
+        tracerPoints.Clear();
         StopCoroutine(Shoot());
         //player.ShootGun(true);
     }
+    
 }
