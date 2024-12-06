@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -75,7 +76,7 @@ public class Player : MonoBehaviour
         }
         if(current.amount <= 0)
         {
-            Destroy(gameObject);
+            SceneManager.LoadScene("Game");
         }
     }
     private void FixedUpdate()
@@ -154,5 +155,12 @@ public class Player : MonoBehaviour
         StopCoroutine(Shoot());
         //player.ShootGun(true);
     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "KillTrigger")
+        {
+            SceneManager.LoadScene("Game");
+        }
+    }
 }
