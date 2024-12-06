@@ -9,7 +9,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField] Stat current;
     [SerializeField] Stat max;
     [SerializeField] Image bar;
-    [SerializeField] GameObject enemy;
+    private bool isTouchingEnemy = false;
 
     // Update is called once per frame
     void Update()
@@ -18,11 +18,29 @@ public class HealthBar : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<EnemyAI>())
-        
+        if(collision.gameObject.GetComponent<EnemyAI>())
         {
-            current.amount -= 1;
+            isTouchingEnemy = true;
+            StartCoroutine(StartDamage());
         }
     }
-    
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if(collision.gameObject.GetComponent<EnemyAI>())
+        {
+            isTouchingEnemy = false;
+            StopCoroutine(StartDamage());
+        }
+    }
+    IEnumerator StartDamage()
+    {
+        yield return new WaitForSeconds(.5f);
+        while(current.amount > 0 && isTouchingEnemy == true)
+        {
+            current.amount -= 1;
+            yield return new WaitForSeconds(1f);
+        }
+
+    }
 }
