@@ -32,7 +32,7 @@ public class Key : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("Hit something");
+        //Debug.Log("Hit something");
         // Slow down speedS
         if (collision.gameObject.TryGetComponent<Player>(out Player player))
         {
@@ -42,7 +42,7 @@ public class Key : MonoBehaviour
             player.WalkingKey(true);
             gameObject.SetActive(false) ;
             player.curent = this;
-            Debug.Log(player.speed);
+            //Debug.Log(player.speed);
         }
     }
    /* public void Dropkey()

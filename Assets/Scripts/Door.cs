@@ -18,14 +18,15 @@ public class Door : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Hit door");
+        //Debug.Log("Hit door");
         if (collision.gameObject.TryGetComponent<Player>(out Player player))
         {
             if (player.speed <= 2)
             {
                 Destroy(this.gameObject);
                 player.WalkingKey(false);
-                
+                player.speed = player.maxSpeed;
+                player.normalSpeed = player.maxSpeed;
             }
         }
     }

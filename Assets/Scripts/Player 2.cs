@@ -28,7 +28,8 @@ public class Player : MonoBehaviour
     [SerializeField] LineRenderer tracer;
     List<Vector3> tracerPoints = new List<Vector3>();
 
-    private float normalSpeed;
+    public float normalSpeed;
+    public float maxSpeed;
     private float rotX;
     private float rotY;
 
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
+        maxSpeed = speed;
         normalSpeed = speed;
         gameObject.tag = "Player";
         tracerPoints.Clear();
