@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject crosshair;
     PlayerInput playerMovement;
     [SerializeField] int dist;
+    public Key curent = null;
 
     [SerializeField] LineRenderer tracer;
     List<Vector3> tracerPoints = new List<Vector3>();
@@ -106,9 +107,10 @@ public class Player : MonoBehaviour
     }
     public void WalkingKey(bool hasKey)
     {
-        animator.SetBool("Key", true);
-        gameObject.SetActive(true);
-        keyhold.SetActive(true);
+        animator.SetBool("Key", hasKey);
+        //gameObject.SetActive(hasKey);
+        HasKey.gameObject.SetActive(hasKey);
+        keyhold.SetActive(hasKey);
         
     }
     public void DropKey(bool hasKey)
@@ -177,12 +179,12 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene("Game");
         }
     }
-   /* public void Dropkey()
+    public void Dropkey()
     {
         Debug.Log("drop key");
-        new Key = GetComponent<Key>();
-        Vector3 NewKeypos = Key.transform.position + (this.transform.forward * dist);
-        this.transform.position = NewKeypos;
-        gameObject.SetActive(false);
-    }*/
+        
+        Vector3 NewKeypos = curent.gameObject.transform.position + (curent.gameObject.transform.forward * dist);
+        curent.gameObject.transform.position = NewKeypos;
+        curent.gameObject.SetActive(true);
+    }
 }

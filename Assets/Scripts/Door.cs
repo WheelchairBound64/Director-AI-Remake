@@ -24,6 +24,8 @@ public class Door : MonoBehaviour
             if (player.speed <= 2)
             {
                 Destroy(this.gameObject);
+                player.WalkingKey(false);
+                
             }
         }
     }

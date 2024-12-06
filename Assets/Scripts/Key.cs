@@ -40,14 +40,14 @@ public class Key : MonoBehaviour
             player.speed = player.speed / 2;
             player.WalkingKey(true);
             gameObject.SetActive(false) ;
-
+            player.curent = this;
             Debug.Log(player.speed);
         }
     }
-    public void Dropkey()
+   /* public void Dropkey()
     {
         Vector3 NewKeypos = myplayer.transform.position + (myplayer.transform.forward * dist);
         this.transform.position = NewKeypos;
         gameObject.SetActive (false);
-    }
+    }*/
 }
