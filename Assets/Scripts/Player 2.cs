@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -132,6 +133,7 @@ public class Player : MonoBehaviour
             {
                 enemy.Damage();
             }
+
         }
 
         tracer.positionCount = tracerPoints.Count;
@@ -141,6 +143,17 @@ public class Player : MonoBehaviour
         }
 
         StartCoroutine(Shoot());
+    }
+
+    public void disableGun()
+    {
+        if (gameObject.TryGetComponent<Player>(out Player player))    
+        {
+            if (player.speed <= 2)
+            {
+                player.animator.SetBool("Shoot", false);
+            }
+        }
     }
 
     IEnumerator Shoot()
