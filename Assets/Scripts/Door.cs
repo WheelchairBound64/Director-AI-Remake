@@ -4,23 +4,12 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    private void OnTriggerEnter(Collider collision)
+    private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Hit door");
         if (collision.gameObject.TryGetComponent<Player>(out Player player))
         {
-            if (player.speed <= 2)
+            if (player.speed <= 3)
             {
                 Destroy(this.gameObject);
             }
