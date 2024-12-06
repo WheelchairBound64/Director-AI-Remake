@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     [SerializeField] Transform gunEnd;
     [SerializeField] GameObject crosshair;
     PlayerInput playerMovement;
+    [SerializeField] int dist;
 
     [SerializeField] LineRenderer tracer;
     List<Vector3> tracerPoints = new List<Vector3>();
@@ -176,4 +177,12 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene("Game");
         }
     }
+   /* public void Dropkey()
+    {
+        Debug.Log("drop key");
+        new Key = GetComponent<Key>();
+        Vector3 NewKeypos = Key.transform.position + (this.transform.forward * dist);
+        this.transform.position = NewKeypos;
+        gameObject.SetActive(false);
+    }*/
 }

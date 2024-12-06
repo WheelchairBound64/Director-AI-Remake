@@ -44,7 +44,7 @@ public class Key : MonoBehaviour
             Debug.Log(player.speed);
         }
     }
-    private void Dropkey()
+    public void Dropkey()
     {
         Vector3 NewKeypos = myplayer.transform.position + (myplayer.transform.forward * dist);
         this.transform.position = NewKeypos;

@@ -1110,6 +1110,7 @@ MonoBehaviour:
   gun: {fileID: 7615814529126578544}
   gunEnd: {fileID: 8521207134914597362}
   crosshair: {fileID: 5355206886843974753}
+  dist: 0
   tracer: {fileID: 4643157389724338465}
 --- !u!114 &7396358604028960419
 MonoBehaviour:
@@ -1223,7 +1224,31 @@ MonoBehaviour:
     m_ActionId: c23dcd44-0395-4162-87d4-7e09100a2305
     m_ActionName: Player/Shoot[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2410318215954468281}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: DropKey
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 11500000, guid: 804506ba7f25ba44c85be7cfc5e20fea, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
+        m_MethodName: set_name
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: c51442bd-2241-4fe1-b207-57a21a867c57
     m_ActionName: Player/DropKey[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
@@ -2833,6 +2858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerKey: {fileID: 0}
+  dist: 0
 --- !u!1 &6135236821102420856
 GameObject:
   m_ObjectHideFlags: 0

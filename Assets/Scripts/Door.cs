@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -15,7 +16,7 @@ public class Door : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter(Collider collision)
+    private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Hit door");
         if (collision.gameObject.TryGetComponent<Player>(out Player player))
