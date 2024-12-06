@@ -26,7 +26,8 @@ public class Player : MonoBehaviour
     [SerializeField] LineRenderer tracer;
     List<Vector3> tracerPoints = new List<Vector3>();
 
-    private float normalSpeed;
+    public float normalSpeed;
+    public float maxSpeed;
     private float rotX;
     private float rotY;
 
@@ -41,6 +42,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         normalSpeed = speed;
+        maxSpeed = speed;
         gameObject.tag = "Player";
         tracerPoints.Clear();
         gun.SetActive(true);
@@ -53,7 +55,7 @@ public class Player : MonoBehaviour
         // movement
         input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         animator.SetFloat("MoveSpeed", Mathf.Abs(input.magnitude));
-        
+
         // rotation
         float mouseX = Input.GetAxis("Mouse X") * sensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity;

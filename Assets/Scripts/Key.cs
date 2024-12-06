@@ -37,7 +37,8 @@ public class Key : MonoBehaviour
         if (collision.gameObject.TryGetComponent<Player>(out Player player))
         {
             myplayer = player;
-            player.speed = player.speed / 2;
+            player.speed = player.maxSpeed / 2;
+            player.normalSpeed = player.speed;
             player.WalkingKey(true);
             gameObject.SetActive(false) ;
 
