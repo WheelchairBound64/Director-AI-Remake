@@ -107,9 +107,9 @@ public class Player : MonoBehaviour
     }
     public void WalkingKey(bool hasKey)
     {
-        animator.SetBool("Key", true);
-        gameObject.SetActive(true);
-        keyhold.SetActive(true);
+        animator.SetBool("Key", hasKey);
+        //gameObject.SetActive(hasKey);
+        keyhold.SetActive(hasKey);
         
     }
     public void DropKey(bool hasKey)
