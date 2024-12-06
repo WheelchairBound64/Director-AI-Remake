@@ -22,12 +22,13 @@ public class Player : MonoBehaviour
     [SerializeField] Transform gunEnd;
     [SerializeField] GameObject crosshair;
     PlayerInput playerMovement;
+    [SerializeField] int dist;
+    public Key curent = null;
 
     [SerializeField] LineRenderer tracer;
     List<Vector3> tracerPoints = new List<Vector3>();
 
-    public float normalSpeed;
-    public float maxSpeed;
+    private float normalSpeed;
     private float rotX;
     private float rotY;
 
@@ -42,7 +43,6 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         normalSpeed = speed;
-        maxSpeed = speed;
         gameObject.tag = "Player";
         tracerPoints.Clear();
         gun.SetActive(true);
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
         // movement
         input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         animator.SetFloat("MoveSpeed", Mathf.Abs(input.magnitude));
-
+        
         // rotation
         float mouseX = Input.GetAxis("Mouse X") * sensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
@@ -109,6 +109,7 @@ public class Player : MonoBehaviour
     {
         animator.SetBool("Key", hasKey);
         //gameObject.SetActive(hasKey);
+        HasKey.gameObject.SetActive(hasKey);
         keyhold.SetActive(hasKey);
         
     }
@@ -177,5 +178,13 @@ public class Player : MonoBehaviour
         {
             SceneManager.LoadScene("Game");
         }
+    }
+    public void Dropkey()
+    {
+        Debug.Log("drop key");
+        
+        Vector3 NewKeypos = curent.gameObject.transform.position + (curent.gameObject.transform.forward * dist);
+        curent.gameObject.transform.position = NewKeypos;
+        curent.gameObject.SetActive(true);
     }
 }

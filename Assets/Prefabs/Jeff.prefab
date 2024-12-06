@@ -1110,6 +1110,7 @@ MonoBehaviour:
   gun: {fileID: 7615814529126578544}
   gunEnd: {fileID: 8521207134914597362}
   crosshair: {fileID: 5355206886843974753}
+  dist: 0
   tracer: {fileID: 4643157389724338465}
   normalSpeed: 0
   maxSpeed: 0
@@ -1225,7 +1226,19 @@ MonoBehaviour:
     m_ActionId: c23dcd44-0395-4162-87d4-7e09100a2305
     m_ActionName: Player/Shoot[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2410318215954468281}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Dropkey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: c51442bd-2241-4fe1-b207-57a21a867c57
     m_ActionName: Player/DropKey[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
@@ -1308,6 +1321,15 @@ LineRenderer:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9888476
+        value: 0.9649123
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
