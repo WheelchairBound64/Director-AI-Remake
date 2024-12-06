@@ -10,6 +10,8 @@ public class SpawnEnemy : MonoBehaviour
     public int enemyCount;
     private int counter;
     private int num;
+    private int advanceSpawnerNum;
+    public float advanceSpawnerTime;
     public float startDelay;
     public float delayRespawn;
     public float spawnSpeed;
@@ -17,9 +19,9 @@ public class SpawnEnemy : MonoBehaviour
     void Start()
     {
         spawn.GetComponent<MeshRenderer>().enabled = false;
+        advanceSpawnerNum = 0;
         counter = enemyCount;
         num = 1;
-        //StartCoroutine(SpawnSteve(enemy, spawn));
     }
 
     // Update is called once per frame
@@ -30,6 +32,7 @@ public class SpawnEnemy : MonoBehaviour
         {
             num -= 1;
             StartSpawner();
+            StartCoroutine(AdvanceSpawns());
         }
     }
 
@@ -49,6 +52,7 @@ public class SpawnEnemy : MonoBehaviour
         }
         StopCoroutine(SpawnSteve(enemy, spawn));
         counter = enemyCount;
+        advanceSpawnerNum++;
         StartCoroutine(RestartSpawner());
     }
 
@@ -57,5 +61,16 @@ public class SpawnEnemy : MonoBehaviour
         yield return new WaitForSeconds(delayRespawn);
         num++;
         StopCoroutine(RestartSpawner());
+    }
+
+    IEnumerator AdvanceSpawns()
+    {
+        while (advanceSpawnerNum == 0)
+        {
+            yield return new WaitForSeconds(advanceSpawnerTime);
+            enemyCount *= 2;
+            delayRespawn /= 2;
+            spawnSpeed /= 2;
+        }
     }
 }

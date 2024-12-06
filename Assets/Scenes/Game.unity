@@ -509,23 +509,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5484597489140549, guid: 726aaadc842f3234d83615e47ce80eb4, type: 3}
       propertyPath: enemyCount
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5484597489140549, guid: 726aaadc842f3234d83615e47ce80eb4, type: 3}
       propertyPath: spawnSpeed
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5484597489140549, guid: 726aaadc842f3234d83615e47ce80eb4, type: 3}
       propertyPath: startDelay
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5484597489140549, guid: 726aaadc842f3234d83615e47ce80eb4, type: 3}
       propertyPath: delayRespawn
-      value: 60
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484597489140549, guid: 726aaadc842f3234d83615e47ce80eb4, type: 3}
+      propertyPath: advanceSpawnerTime
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1822260232310239876, guid: 726aaadc842f3234d83615e47ce80eb4, type: 3}
       propertyPath: m_Name
-      value: SlowSpawn
+      value: SlowSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 1822260232310239876, guid: 726aaadc842f3234d83615e47ce80eb4, type: 3}
       propertyPath: m_IsActive
@@ -729,7 +733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9165057199965068777, guid: fce936aae505a994ea419cd224fec03e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.3883004
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 9165057199965068777, guid: fce936aae505a994ea419cd224fec03e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -737,7 +741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9165057199965068777, guid: fce936aae505a994ea419cd224fec03e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.881926
+      value: 8.1
       objectReference: {fileID: 0}
     - target: {fileID: 9165057199965068777, guid: fce936aae505a994ea419cd224fec03e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1423,15 +1427,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5484597489140549, guid: 726aaadc842f3234d83615e47ce80eb4, type: 3}
       propertyPath: startDelay
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5484597489140549, guid: 726aaadc842f3234d83615e47ce80eb4, type: 3}
       propertyPath: delayRespawn
-      value: 6
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484597489140549, guid: 726aaadc842f3234d83615e47ce80eb4, type: 3}
+      propertyPath: isKeySpawner
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484597489140549, guid: 726aaadc842f3234d83615e47ce80eb4, type: 3}
+      propertyPath: advanceSpawnerTime
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1822260232310239876, guid: 726aaadc842f3234d83615e47ce80eb4, type: 3}
       propertyPath: m_Name
-      value: FastSpawn
+      value: FastSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 1822260232310239876, guid: 726aaadc842f3234d83615e47ce80eb4, type: 3}
       propertyPath: m_IsActive
