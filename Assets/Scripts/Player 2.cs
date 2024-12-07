@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -21,11 +22,14 @@ public class Player : MonoBehaviour
     [SerializeField] Transform gunEnd;
     [SerializeField] GameObject crosshair;
     PlayerInput playerMovement;
+    [SerializeField] int dist;
+    public Key curent = null;
 
     [SerializeField] LineRenderer tracer;
     List<Vector3> tracerPoints = new List<Vector3>();
 
-    private float normalSpeed;
+    public float normalSpeed;
+    public float maxSpeed;
     private float rotX;
     private float rotY;
 
@@ -39,6 +43,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
+        maxSpeed = speed;
         normalSpeed = speed;
         gameObject.tag = "Player";
         tracerPoints.Clear();
@@ -104,9 +109,10 @@ public class Player : MonoBehaviour
     }
     public void WalkingKey(bool hasKey)
     {
-        animator.SetBool("Key", true);
-        gameObject.SetActive(true);
-        keyhold.SetActive(true);
+        animator.SetBool("Key", hasKey);
+        //gameObject.SetActive(hasKey);
+        HasKey.gameObject.SetActive(hasKey);
+        keyhold.SetActive(hasKey);
         
     }
     public void DropKey(bool hasKey)
@@ -132,6 +138,7 @@ public class Player : MonoBehaviour
             {
                 enemy.Damage();
             }
+
         }
 
         tracer.positionCount = tracerPoints.Count;
@@ -141,6 +148,17 @@ public class Player : MonoBehaviour
         }
 
         StartCoroutine(Shoot());
+    }
+
+    public void disableGun()
+    {
+        if (gameObject.TryGetComponent<Player>(out Player player))    
+        {
+            if (player.speed <= 2)
+            {
+                player.animator.SetBool("Shoot", false);
+            }
+        }
     }
 
     IEnumerator Shoot()
@@ -162,5 +180,13 @@ public class Player : MonoBehaviour
         {
             SceneManager.LoadScene("Game");
         }
+    }
+    public void Dropkey()
+    {
+        Debug.Log("drop key");
+        
+        Vector3 NewKeypos = curent.gameObject.transform.position + (curent.gameObject.transform.forward * dist);
+        curent.gameObject.transform.position = NewKeypos;
+        curent.gameObject.SetActive(true);
     }
 }
